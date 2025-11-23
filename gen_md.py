@@ -73,7 +73,7 @@ def create_homepage(g):
 
     if scheme:
         # Haal de titel op (skos:prefLabel)
-        label = g.value(scheme, SKOS.prefLabel)
+        label = g.value(scheme, DCTERMS.title)
         if label:
             title_text = str(label)
         
