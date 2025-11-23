@@ -69,6 +69,7 @@ def create_homepage(g):
     # Standaard teksten voor fallback
     title_text = "Begrippenkader"
     description_text = "Gebruik het navigatiemenu of de zoekbalk om begrippen te vinden."
+    uri_str = str(scheme)
 
     if scheme:
         # Haal de titel op (skos:prefLabel)
@@ -88,9 +89,14 @@ permalink: /
 hash_redirect: true
 ---
 
-# Begrippen
+# Begrippenkader {title_text}
+
+{uri_str}
+{{: .fs-2 .text-mono .text-grey-dk-000 .mb-4}}
 
 {description_text}
+
+Gebruik het nagivatiemenu of de zoekbalk om begrippen te vinden.
 """
     with open(os.path.join(OUTPUT_DIR, "index.md"), "w", encoding="utf-8") as f:
         f.write(md)
