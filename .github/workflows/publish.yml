@@ -21,7 +21,6 @@ jobs:
       - name: Checkout repository
         uses: actions/checkout@v4
 
-      # 1. Python Stuk (Data preparatie)
       - name: Setup Python
         uses: actions/setup-python@v4
         with:
@@ -31,10 +30,19 @@ jobs:
       - name: Install Python dependencies
         run: pip install -r requirements.txt
 
-      - name: Run Conversion Script
+      - name: Validate against NL-SBB SHACL
+        run: |
+          pyshacl \
+          -s 'https://raw.githubusercontent.com/geonovum/NL-SBB/main/profiles/skos-ap-nl.ttl' \
+          -m \
+          -i rdfs \
+          -a \
+          -f human \
+          begrippenkaders/energiesysteembeheer.ttl
+
+      - name: Generate Markdown from SKOS model
         run: python gen_md.py
 
-      # 2. Ruby Stuk (Site bouwen)
       - name: Setup Ruby
         uses: ruby/setup-ruby@v1
         with:
