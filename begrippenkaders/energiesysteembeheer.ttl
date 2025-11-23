@@ -10,7 +10,7 @@
 
 <> a skos:ConceptScheme;
   rdfs:comment "Dit begrippenkader definieert de soorten dingen die worden beheerd door de Nederlanse <a href=\"https://wetten.overheid.nl/BWBR0050714\">transmissie- en distributiesysteembeheerders</a> bij de uitvoering van de economische activiteiten <a href=\"https://sbi-api.cbs.nl/api/SBIData/SBIInfo/3513\">3513</a> (Transmissie van elektriciteit), <a href=\"https://sbi-api.cbs.nl/api/SBIData/SBIInfo/3514\">3514</a> (Distributie van elektriciteit), <a href=\"https://sbi-api.cbs.nl/api/SBIData/SBIInfo/4950\">4950</a> (Transport via pijpleidingen) en <a href=\"https://sbi-api.cbs.nl/api/SBIData/SBIInfo/3522\">3522</a> (Distributie van gasvormige brandstoffen via leidingen). De begrippen op het hoogste niveau in de hiërarchie zijn gedefinieerd door <a href=\"https://nbility-model.github.io\">NBility</a>."@nl;
-  dct:title "Energiesysteembeheer"@nl .
+  dct:title "Begrippenkader van Netbeheer Nederland"@nl .
 
 :energiedrager a skos:Concept;
   skos:definition "medium dat bruikbare energie bevat"@nl;

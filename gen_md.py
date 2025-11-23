@@ -89,7 +89,7 @@ permalink: /
 hash_redirect: true
 ---
 
-# Begrippenkader {title_text}
+# {title_text}
 
 {uri_str}
 {{: .fs-2 .text-mono .text-grey-dk-000 .mb-4}}
