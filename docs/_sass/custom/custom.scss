@@ -1,13 +1,14 @@
 // Broader navigation sidebar
-@media (min-width: 85rem) {
-    .site-nav, .site-header, .site-footer {
-        width: 24rem;
-    }
-}
-// Override the theme's default
+// First override the theme's default
 @media (min-width: 66.5rem) {
     .site-nav, .site-header, .site-footer {
         width: 100%;
+    }
+}
+// Then define our preferred width
+@media (min-width: 85rem) {
+    .site-nav, .site-header, .site-footer {
+        width: 24rem;
     }
 }
 
