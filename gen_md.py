@@ -244,7 +244,7 @@ def get_internal_links(g, subject, predicate, concept_map):
         uri = str(obj)
         if uri in concept_map:
             lbl = concept_map[uri]['label']
-            links.append(f'<a href="{BASE_URL}{concept_map[uri]['permalink']}">{lbl}</a>')
+            links.append(f"<a href=\"{BASE_URL}{concept_map[uri]['permalink']}\">{lbl}</a>")
     return links
 
 from rdflib import URIRef, Literal
