@@ -7,7 +7,8 @@ from slugify import slugify
 # --- CONFIG ---
 INPUT_DIR = "begrippenkaders"
 OUTPUT_DIR = "docs"
-RESOURCE_DIR = "doc" # term/doc, id/doc pattern
+SENSE = "term"
+CONTENT = "doc" # term/doc, id/doc pattern
 BASE_URL = "/begrippen"
 
 # Namespaces
@@ -42,7 +43,6 @@ def main():
             "uri": str(s),
             "label": str(pref_label),
             "slug": slug, # TODO: afleiden van URI
-            "permalink": f"/{slug}/",
             "broader": []
         }
 
@@ -54,7 +54,7 @@ def main():
                 info['broader'].append(concept_map[str(parent)]['label'])
 
     # Markdown genereren
-    os.mkdir(os.path.join(OUTPUT_DIR, RESOURCE_DIR))
+    os.mkdir(os.path.join(OUTPUT_DIR, CONTENT))
     for uri, info in concept_map.items():
         subject = next(s for s in g.subjects() if str(s) == uri)
         generate_markdown(g, subject, info, concept_map)
@@ -121,9 +121,9 @@ def generate_markdown(g, s, info, concept_map):
     md = f"""---
 title: {label}
 {parent_line}
-permalink: {info['permalink']}
+permalink: /{CONTENT}/{info['slug']}
 redirects:
-  - /term/{info['slug']}
+  - /{SENSE}/{info['slug']}
 ---
 
 {{: .note }}
@@ -255,7 +255,7 @@ def get_internal_links(g, subject, predicate, concept_map):
         uri = str(obj)
         if uri in concept_map:
             lbl = concept_map[uri]['label']
-            links.append(f"<a href=\"{BASE_URL}{concept_map[uri]['permalink']}\">{lbl}</a>")
+            links.append(f"<a href=\"{BASE_URL}/{CONTENT}/{concept_map[uri]['slug']}\">{lbl}</a>")
     return links
 
 from rdflib import URIRef, Literal
