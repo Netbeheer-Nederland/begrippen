@@ -3,6 +3,9 @@ title: NL-SBB
 parent: Redacteurs
 ---
 
+{{: .note }}
+Kijk gerust rond! Aan deze website wordt momenteel nog gewerkt.
+
 # NL-SBB
 
 *Deze pagina is een placeholder.*
