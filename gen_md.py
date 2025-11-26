@@ -6,7 +6,7 @@ from slugify import slugify
 
 # --- CONFIG ---
 INPUT_DIR = "begrippenkaders"
-OUTPUT_DIR = "docs"
+OUTPUT_DIR = "docs/doc"
 BASE_URL = "/begrippen"
 
 # Namespaces
@@ -40,7 +40,7 @@ def main():
         concept_map[str(s)] = {
             "uri": str(s),
             "label": str(pref_label),
-            "slug": slug,
+            "slug": slug, # TODO: afleiden van URI
             "permalink": f"/{slug}/",
             "broader": []
         }
@@ -85,7 +85,6 @@ def create_homepage(g):
 title: Home
 nav_exclude: true
 permalink: /
-hash_redirect: true
 ---
 
 {{: .note }}
@@ -121,6 +120,7 @@ def generate_markdown(g, s, info, concept_map):
 title: {label}
 {parent_line}
 permalink: {info['permalink']}
+redirect_from: /term/{info['slug']}
 ---
 
 {{: .note }}
