@@ -1,3 +1,8 @@
+// Breadcrumb: fix visually messy word wraps in long breadcrumbs
+.breadcrumb-nav-list-item {
+    display: inline-block;
+}
+
 // Definition list: fix margin in multi-line items
 .main-content dt {
     margin-bottom: 0;
