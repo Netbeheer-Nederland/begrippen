@@ -64,7 +64,6 @@ def main():
         os.makedirs(path_aliases)
 
     # Markdown genereren
-    os.mkdir(os.path.join(OUTPUT_DIR, "_" + CONTENT))
     for uri, info in concept_map.items():
         subject = next(s for s in g.subjects() if str(s) == uri)
         generate_markdown(g, subject, info, concept_map)
