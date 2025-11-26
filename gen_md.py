@@ -54,7 +54,7 @@ def main():
                 info['broader'].append(concept_map[str(parent)]['label'])
 
     # Markdown genereren
-    os.mkdir(os.path.join(OUTPUT_DIR, CONTENT))
+    os.mkdir(os.path.join(OUTPUT_DIR, "_" + CONTENT))
     for uri, info in concept_map.items():
         subject = next(s for s in g.subjects() if str(s) == uri)
         generate_markdown(g, subject, info, concept_map)
@@ -84,8 +84,7 @@ def create_homepage(g):
             description_text = str(comment)
 
     md = f"""---
-title: Home
-nav_exclude: true
+title: Startpagina
 permalink: /
 ---
 
@@ -245,7 +244,7 @@ Kijk gerust rond! Aan deze website wordt momenteel nog gewerkt.
 
     # Opslaan in de root van docs/
     filename = f"{info['slug']}.md"
-    with open(os.path.join(OUTPUT_DIR, filename), "w", encoding="utf-8") as f:
+    with open(os.path.join(OUTPUT_DIR, "_" + CONTENT, filename), "w", encoding="utf-8") as f:
         f.write(md)
 
 # --- Helper Functies ---

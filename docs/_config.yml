@@ -22,3 +22,12 @@ aux_links:
 
 plugins:
   - jekyll-redirect-from
+
+collections:
+  doc:
+    output: true
+
+just_the_docs:
+  collections:
+    doc:
+      name: Begrippen
