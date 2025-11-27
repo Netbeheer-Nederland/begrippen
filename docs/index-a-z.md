@@ -8,16 +8,18 @@ Kijk gerust rond! Aan deze website wordt momenteel nog gewerkt.
 # Alfabetisch overzicht
 
 {% assign current_letter = "" %}
-{% assign sorted_pages = site.documents | sort: "title" %}
+{% assign sorted_pages = site.documents | sort_natural: "title" %}
 
 {% for p in sorted_pages %}
-    {% assign char = p.title | slice: 0, 1 | upcase %}
-    {% if char != current_letter %}
-      {% assign current_letter = char %}
+  {% assign char = p.title | slice: 0, 1 | slugify | upcase %}
+  {% if char != current_letter %}
+    {% assign current_letter = char %}
 
 ## {{ char }}
-{: .text-delta}
 
-    {% endif %}
-[{{ p.title }}]({{ p.url | relative_url }})<br>
+  {% endif %}
+
+[{{ p.title }}]({{ p.url | relative_url }})
+{:. lh-0}
+
 {% endfor %}
