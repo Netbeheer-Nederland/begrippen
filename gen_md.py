@@ -125,11 +125,13 @@ def generate_markdown(g, s, info, concept_map, alias_collection):
     if info['broader']:
         parent_line = f"parent: {info['broader'][0]}"
 
+    alt_labels_str = "".join([f"\n  - {alt}" for alt in alt_labels])
+
     md = f"""---
 title: {label}
 {parent_line}
 permalink: {target_permalink}
-alt_labels:{''.join([f'\n  - {alt}' for alt in alt_labels])}
+alt_labels:{alt_labels_str}
 redirect_from:
   - /{SENSE}/{target_slug}
 ---
