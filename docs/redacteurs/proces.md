@@ -10,6 +10,7 @@ Kijk gerust rond! Aan deze website wordt momenteel nog gewerkt.
 
 *Deze pagina is een placeholder.*
 
-![Proces](/assets/images/proces.drawio.svg)
+![Proces]({{ site.baseurl }}/assets/images/proces.drawio.svg)
+
 
 
