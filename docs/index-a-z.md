@@ -10,22 +10,23 @@ Kijk gerust rond! Aan deze website wordt momenteel nog gewerkt.
 
 {% assign entries_string = "" %}
 
-{% comment %} --- STAP 1: Bouw de lijst met HTML/Markdown inbegrepen --- {% endcomment %}
+{% comment %} --- STAP 1: Bouwen --- {% endcomment %}
 {% for p in site.documents %}
   {% assign url = p.url | relative_url %}
+  
+  {% comment %} Maak de standaard Markdown link vast 1x aan: [Titel](/url) {% endcomment %}
+  {% assign md_link = "[" | append: p.title | append: "](" | append: url | append: ")" %}
 
-  {% comment %} 1. De hoofdpagina: Gewone Markdown link {% endcomment %}
-  {% comment %} Formaat: SorteerNaam :: OutputString {% endcomment %}
-  {% assign link_md = "[" | append: p.title | append: "](" | append: url | append: ")" %}
-  {% assign entry = p.title | append: "::" | append: link_md %}
+  {% comment %} 1. Hoofd-item {% endcomment %}
+  {% assign entry = p.title | append: "::" | append: md_link %}
   {% assign entries_string = entries_string | append: entry | append: "|||" %}
 
-  {% comment %} 2. De alt_labels: HTML met grijze tekst en pijl {% endcomment %}
+  {% comment %} 2. Alt-items {% endcomment %}
   {% if p.alt_labels %}
     {% for alt in p.alt_labels %}
       {% assign alt_span = '<span class="grey-dk-000">' | append: alt | append: '</span>' %}
       {% assign display_string = alt_span | append: " &rarr; " | append: md_link %}
-      {% assign entry = alt | append: "::" | append: alt_html %}
+      {% assign entry = alt | append: "::" | append: display_string %}
       {% assign entries_string = entries_string | append: entry | append: "|||" %}
     {% endfor %}
   {% endif %}
@@ -39,10 +40,8 @@ Kijk gerust rond! Aan deze website wordt momenteel nog gewerkt.
 {% for item in sorted_entries %}
   {% if item == "" %}{% continue %}{% endif %}
 
-  {% comment %} Splits op de eerste '::' {% endcomment %}
   {% assign parts = item | split: "::" %}
   {% assign sort_name = parts[0] %}
-  {% comment %} Omdat parts[1] de rest is, moeten we oppassen als je '::' in je titels gebruikt, maar meestal gaat dit goed {% endcomment %}
   {% assign display_string = parts[1] %}
 
   {% assign char = sort_name | slice: 0, 1 | slugify | upcase %}
