@@ -28,7 +28,7 @@
   skos:definition "onttrekking van energie aan het energienet"@nl;
   skos:inScheme <> ;
   skos:prefLabel "afname"@nl;
-  skos:altLabel "levering"@nl;
+  skos:altLabel "levering"@nl, "verbruik"@nl;
   skos:broader :energie-uitwisseling;
   skos:related :energienet .
 
@@ -68,7 +68,7 @@
   skos:definition "inbrenging van energie op het energienet"@nl;
   skos:inScheme <> ;
   skos:prefLabel "invoeding"@nl;
-  skos:altLabel "teruglevering"@nl;
+  skos:altLabel "opwek"@nl, "productie"@nl, "teruglevering"@nl;
   skos:broader :energie-uitwisseling .
 
 :standaardjaarinvoeding a skos:Concept;
@@ -84,7 +84,6 @@
   skos:definition "ieder die van een netbeheerder de beschikking heeft gekregen over een aansluiting"@nl;
   skos:inScheme <> ;
   skos:prefLabel "aangeslotene"@nl;
-  skos:altLabel "afnemer"@nl;
   skos:broader :klant;
   skos:related :aansluiting, :netbeheerder;
   dct:source :energiewet .
