@@ -24,7 +24,7 @@ Kijk gerust rond! Aan deze website wordt momenteel nog gewerkt.
   {% comment %} 2. Alt-items {% endcomment %}
   {% if p.alt_labels %}
     {% for alt in p.alt_labels %}
-      {% assign alt_span = '<span class="grey-dk-000">' | append: alt | append: '</span>' %}
+      {% assign alt_span = '<span class="text-grey-dk-100">' | append: alt | append: '</span>' %}
       {% assign display_string = alt_span | append: " &rarr; " | append: md_link %}
       {% assign entry = alt | append: "::" | append: display_string %}
       {% assign entries_string = entries_string | append: entry | append: "|||" %}
