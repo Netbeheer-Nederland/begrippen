@@ -38,7 +38,7 @@ jobs:
           -i rdfs \
           -a \
           -f human \
-          begrippenkaders/energiesysteembeheer.ttl
+          begrippenkaders/*.ttl
 
       - name: Generate Markdown from SKOS model
         run: python gen_md.py
