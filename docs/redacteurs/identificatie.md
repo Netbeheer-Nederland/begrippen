@@ -22,6 +22,8 @@ Ieder begrip krijgt een betekenisloze, stabiele UUID (versie 4) toegekend. Deze 
   </pre>
 </details>
 
+---
+
 {: .note-title }
 > TIP
 >
