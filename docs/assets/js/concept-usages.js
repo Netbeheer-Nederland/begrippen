@@ -34,7 +34,7 @@ document.addEventListener("DOMContentLoaded", async function() {
         // --- Render HTML ---
         // We gebruiken de styling classes van Just the Docs
         let html = `
-            <h2>Gebruik</h2>
+            <h2 class="text-gamma">Gebruik</h2>
             <div class="table-wrapper">
                 <table>
                     <thead>

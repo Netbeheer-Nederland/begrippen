@@ -160,68 +160,75 @@ Kijk gerust rond! Aan deze website wordt momenteel nog gewerkt.
 
     examples = [str(l) for l in g.objects(s, SKOS.example)]
     if examples:
-        md += f"\n*Voorbeeld*: {', '.join(examples)}\n"
+        md += f"\nVoorbeeld: {', '.join(examples)}\n"
 
     if alt_labels:
-        md += f"\n*Alternatieve term*: {', '.join(alt_labels)}\n"
+        md += f"\nAlternatieve term: {', '.join(alt_labels)}\n"
 
     if hidden_labels:
-        md += f"\n*Zoekterm*: {', '.join(hidden_labels)}\n"
+        md += f"\nZoekterm: {', '.join(hidden_labels)}\n"
 
-    # Relaties
-    broader = get_internal_links(g, s, SKOS.broader, concept_map)
-    narrower = get_internal_links(g, s, SKOS.narrower, concept_map)
-    related = get_internal_links(g, s, SKOS.related, concept_map)
-    if broader or narrower or related:
-        md += "\n## Relaties\n"
-        md += "\n<dl>\n"
-        if broader:
-            md += "<dt>Bovenliggend</dt>\n"
-            for broader_i in broader: md += f"<dd>{broader_i}</dd>\n"
-        if narrower:
-            md += "<dt>Onderliggend</dt>\n"
-            for narrower_i in narrower: md += f"<dd>{narrower_i}</dd>\n"
-        if related:
-            md += "<dt>Gerelateerd</dt>\n"
-            for related_i in related: md += f"<dd>{related_i}</dd>\n"
-        md += "</dl>\n"
-
-    # Verantwoording
-    broad_match = get_external_links(g, s, SKOS.broadMatch)
-    narrow_match = get_external_links(g, s, SKOS.narrowMatch)
-    close_match = get_external_links(g, s, SKOS.closeMatch)
-    exact_match = get_external_links(g, s, SKOS.exactMatch)
-    related_match = get_external_links(g, s, SKOS.relatedMatch)
-    sources = get_external_links(g, s, DCTERMS.source)
-    change_notes = [str(l) for l in g.objects(s, SKOS.changeNote)]
-    history_notes = [str(l) for l in g.objects(s, SKOS.historyNote)]
-    md += "\n## Verantwoording\n"
+    md += "\n---\n"
     md += "\n<dl>\n"
+
+    broader = get_internal_links(g, s, SKOS.broader, concept_map)
+    if broader:
+        md += "<dt>Bovenliggend</dt>\n"
+        for broader_i in broader: md += f"<dd>{broader_i}</dd>\n"
+
+    narrower = get_internal_links(g, s, SKOS.narrower, concept_map)
+    if narrower:
+        md += "<dt>Onderliggend</dt>\n"
+        for narrower_i in narrower: md += f"<dd>{narrower_i}</dd>\n"
+
+    related = get_internal_links(g, s, SKOS.related, concept_map)
+    if related:
+        md += "<dt>Gerelateerd</dt>\n"
+        for related_i in related: md += f"<dd>{related_i}</dd>\n"
+    md += "</dl>\n"
+
+    broad_match = get_external_links(g, s, SKOS.broadMatch)
     if broad_match:
         md += "<dt>Overeenkomstig bovenliggend</dt>\n"
         for broad_match_i in broad_match: md += f"<dd>{broad_match_i}</dd>\n"
+
+    narrow_match = get_external_links(g, s, SKOS.narrowMatch)
     if narrow_match:
         md += "<dt>Overeenkomstig onderliggend</dt>\n"
         for narrow_match_i in narrow_match: md += f"<dd>{narrow_match_i}</dd>\n"
+
+    close_match = get_external_links(g, s, SKOS.closeMatch)
     if close_match:
         md += "<dt>Vrijwel overeenkomstig</dt>\n"
         for close_match_i in close_match: md += f"<dd>{close_match_i}</dd>\n"
+
+    exact_match = get_external_links(g, s, SKOS.exactMatch)
     if exact_match:
         md += "<dt>Exact overeenkomstig</dt>\n"
         for exact_match_i in exact_match: md += f"<dd>{exact_match_i}</dd>\n"
+
+    related_match = get_external_links(g, s, SKOS.relatedMatch)
     if related_match:
         md += "<dt>Overeenkomstig verwant</dt>\n"
         for related_match_i in related_match: md += f"<dd>{related_match_i}</dd>\n"
+
+    sources = get_external_links(g, s, DCTERMS.source)
     if sources:
         md += "<dt>Bron</dt>\n"
         for source in sources: md += f"<dd>{source}</dd>\n"
+
+    change_notes = [str(l) for l in g.objects(s, SKOS.changeNote)]
     if change_notes:
         md += "<dt>Wijzigingsnotities</dt>\n"
         for change_note in change_notes: md += f"<dd>{change_note}</dd>\n"
+
+    history_notes = [str(l) for l in g.objects(s, SKOS.historyNote)]
     if history_notes:
         md += "<dt>Historie</dt>\n"
         for history_note in history_notes: md += f"<dd>{history_note}</dd>\n"
-    md += f"<dt>URI</dt> <dd>`{str(s)}`</dd>\n"
+
+    md += f"<dt>URI</dt> <dd><code>{str(s)}</code></dd>\n"
+
     md += "</dl>\n"
 
     md += '<div id="concept-usages" class="mt-6"></div>'

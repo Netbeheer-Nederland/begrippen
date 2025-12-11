@@ -7,13 +7,9 @@
 .main-content dt {
     margin-bottom: 0;
 }
+// Definition list: remove colon
 .main-content dt::after {
     content: "";
-}
-
-// Definition list: add border
-.main-content dl {
-    border-top: 1px dotted $grey-lt-300;
 }
 
 // Navbar
