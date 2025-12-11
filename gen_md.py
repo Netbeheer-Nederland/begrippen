@@ -144,6 +144,7 @@ Kijk gerust rond! Aan deze website wordt momenteel nog gewerkt.
 """
 
     md += f'\n<meta name="concept-uri" content="{ str(s) }">\n'
+    md += f"\nURI: {str(s)}\n{{: .fs-2 .text-mono .text-grey-dk-000 .mb-4}}\n"
 
     notation = g.value(s, SKOS.notation)
     if notation: md += f"\n{notation}\n{{: .fs-4 .text-grey-dk-000 .fw-300 .float-right}}\n"
@@ -153,20 +154,27 @@ Kijk gerust rond! Aan deze website wordt momenteel nog gewerkt.
         md += f"\n{definition}\n{{: .fw-500}}\n"
 
     comments = [str(l) for l in g.objects(s, RDFS.comment)]
-    for comment in comments: md += f"\n{comment}\n"
+    if comments:
+        md += "\n## Uitleg\n{{: .text-delta}}\n"
+        for comment in comments: md += f"\n{comment}\n"
 
     scope_notes = [str(l) for l in g.objects(s, SKOS.scopeNote)]
-    for scope_note in scope_notes: md += f"\n{scope_note}\n"
+    if scope_notes:
+        md += "\n## Toelichting\n{{: .text-delta}}\n"
+        for scope_note in scope_notes: md += f"\n{scope_note}\n"
 
     examples = [str(l) for l in g.objects(s, SKOS.example)]
     if examples:
-        md += f"\nVoorbeeld: <em>{'</em>, <em>'.join(examples)}</em>\n"
+        md += "\n## Voorbeeld\n{{: .text-delta}}\n"
+        md += f"\n{', '.join(examples)}\n"
 
     if alt_labels:
-        md += f"\nAlternatieve term: <em>{'</em>, <em>'.join(alt_labels)}</em>\n"
+        md += "\n## Alternatieve term\n{{: .text-delta}}\n"
+        md += f"\n: {', '.join(alt_labels)}\n"
 
     if hidden_labels:
-        md += f"\nZoekterm: <em>{'</em>, <em>'.join(hidden_labels)}</em>\n"
+        md += "\n## Zoekterm\n{{: .text-delta}}\n"
+        md += f"\{', '.join(hidden_labels)}</em>\n"
 
     md += "\n---\n"
 
@@ -226,8 +234,6 @@ Kijk gerust rond! Aan deze website wordt momenteel nog gewerkt.
     if history_notes:
         md += "<dt>Historie</dt>\n"
         for history_note in history_notes: md += f"<dd>{history_note}</dd>\n"
-
-    md += f"<dt>URI</dt> <dd><code>{str(s)}</code></dd>\n"
 
     md += "</dl>\n"
 
