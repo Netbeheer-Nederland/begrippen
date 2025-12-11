@@ -150,7 +150,7 @@ Kijk gerust rond! Aan deze website wordt momenteel nog gewerkt.
 
     definition = g.value(s, SKOS.definition)
     if definition:
-        md += f"\n> {definition}\n"
+        md += f"\n{definition}\n{{: .fw-500}}\n"
 
     comments = [str(l) for l in g.objects(s, RDFS.comment)]
     for comment in comments: md += f"\n{comment}\n"
