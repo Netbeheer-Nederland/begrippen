@@ -185,7 +185,6 @@ Kijk gerust rond! Aan deze website wordt momenteel nog gewerkt.
     if related:
         md += "<dt>Gerelateerd</dt>\n"
         for related_i in related: md += f"<dd>{related_i}</dd>\n"
-    md += "</dl>\n"
 
     broad_match = get_external_links(g, s, SKOS.broadMatch)
     if broad_match:
